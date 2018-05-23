@@ -1,0 +1,406 @@
+"Spawner"
+{
+	"Attacking"
+	{
+		"Wave1"
+		{
+			"Unit"					"creature_01"
+			"Times"					"38"
+			"Count"					"1"
+			"Interval" 				"0.8"
+			"BreakTime"				"1"
+		}
+		"Wave2"
+		{
+			"Unit"					"creature_02"
+			"Times"					"38"
+			"Count"					"1"
+			"Interval" 				"0.8"
+			"BreakTime"				"1"
+		}
+		"Wave3"
+		{
+			"Unit"					"creature_03"
+			"Times"					"38"
+			"Count"					"1"
+			"Interval" 				"0.8"
+			"BreakTime"				"1"
+		}
+		"Wave4"
+		{
+			"Unit"					"creature_04"
+			"Times"					"38"
+			"Count"					"1"
+			"Interval" 				"0.8"
+			"BreakTime"				"1"
+		}
+		"Wave5"
+		{
+			"Unit"					"creature_05"
+			"Times"					"38"
+			"Count"					"1"
+			"Interval" 				"0.8"
+			"BreakTime"				"1"
+		}
+		"Wave6"
+		{
+			"Unit"					"creature_06"
+			"Times"					"38"
+			"Count"					"1"
+			"Interval" 				"0.8"
+			"BreakTime"				"1"
+		}
+		"Wave7"
+		{
+			"Unit"					"creature_07"
+			"Times"					"38"
+			"Count"					"1"
+			"Interval" 				"0.8"
+			"BreakTime"				"1"
+		}
+		"Wave8"
+		{
+			"Unit"					"creature_08"
+			"Times"					"38"
+			"Count"					"1"
+			"Interval" 				"0.8"
+			"BreakTime"				"1"
+		}
+		"Wave9"
+		{
+			"Unit"					"creature_09"
+			"Times"					"38"
+			"Count"					"1"
+			"Interval" 				"0.8"
+			"BreakTime"				"1"
+		}
+		"Wave10"
+		{
+			"Unit"					"creature_10"
+			"Times"					"38"
+			"Count"					"1"
+			"Interval" 				"1.6"
+			"BreakTime"				"1"
+		}
+		"Wave11"
+		{
+			"Unit"					"creature_11"
+			"Times"					"1"
+			"Count"					"1"
+			"Interval" 				"0.8"
+			"BreakTime"				"1"
+		}
+		"Wave12"
+		{
+			"Unit"					"creature_12"
+			"Times"					"1"
+			"Count"					"1"
+			"Interval" 				"0.8"
+			"BreakTime"				"1"
+		}
+		"Wave13"
+		{
+			"Unit"					"creature_13"
+			"Times"					"1"
+			"Count"					"1"
+			"Interval" 				"0.8"
+			"BreakTime"				"1"
+		}
+		"Wave14"
+		{
+			"Unit"					"creature_14"
+			"Times"					"1"
+			"Count"					"1"
+			"Interval" 				"0.8"
+			"BreakTime"				"1"
+		}
+		"Wave15"
+		{
+			"Unit"					"creature_15"
+			"Times"					"1"
+			"Count"					"1"
+			"Interval" 				"0.8"
+			"BreakTime"				"1"
+		}
+		"Wave16"
+		{
+			"Unit"					"creature_16"
+			"Times"					"1"
+			"Count"					"1"
+			"Interval" 				"0.8"
+			"BreakTime"				"1"
+		}
+		"Wave17"
+		{
+			"Unit"					"creature_17"
+			"Times"					"1"
+			"Count"					"1"
+			"Interval" 				"0.8"
+			"BreakTime"				"1"
+		}
+		"Wave18"
+		{
+			"Unit"					"creature_18"
+			"Times"					"1"
+			"Count"					"1"
+			"Interval" 				"0.8"
+			"BreakTime"				"1"
+		}
+		"Wave19"
+		{
+			"Unit"					"creature_19"
+			"Times"					"1"
+			"Count"					"1"
+			"Interval" 				"0.8"
+			"BreakTime"				"1"
+		}
+		"Wave20"
+		{
+			"Unit"					"creature_20"
+			"Times"					"1"
+			"Count"					"1"
+			"Interval" 				"1.6"
+			"BreakTime"				"1"
+		}
+		"Wave21"
+		{
+			"Unit"					"creature_21"
+			"Times"					"1"
+			"Count"					"1"
+			"Interval" 				"0.8"
+			"BreakTime"				"1"
+		}
+		"Wave22"
+		{
+			"Unit"					"creature_22"
+			"Times"					"1"
+			"Count"					"1"
+			"Interval" 				"0.8"
+			"BreakTime"				"1"
+		}
+		"Wave23"
+		{
+			"Unit"					"creature_23"
+			"Times"					"1"
+			"Count"					"1"
+			"Interval" 				"0.8"
+			"BreakTime"				"1"
+		}
+		"Wave24"
+		{
+			"Unit"					"creature_24"
+			"Times"					"1"
+			"Count"					"1"
+			"Interval" 				"0.8"
+			"BreakTime"				"1"
+		}
+		"Wave25"
+		{
+			"Unit"					"creature_25"
+			"Times"					"1"
+			"Count"					"1"
+			"Interval" 				"0.8"
+			"BreakTime"				"1"
+		}
+		"Wave26"
+		{
+			"Unit"					"creature_26"
+			"Times"					"1"
+			"Count"					"1"
+			"Interval" 				"0.8"
+			"BreakTime"				"1"
+		}
+		"Wave27"
+		{
+			"Unit"					"creature_27"
+			"Times"					"1"
+			"Count"					"1"
+			"Interval" 				"0.8"
+			"BreakTime"				"1"
+		}
+		"Wave28"
+		{
+			"Unit"					"creature_28"
+			"Times"					"1"
+			"Count"					"1"
+			"Interval" 				"0.8"
+			"BreakTime"				"1"
+		}
+		"Wave29"
+		{
+			"Unit"					"creature_29"
+			"Times"					"1"
+			"Count"					"1"
+			"Interval" 				"0.8"
+			"BreakTime"				"1"
+		}
+		"Wave30"
+		{
+			"Unit"					"creature_30"
+			"Times"					"1"
+			"Count"					"1"
+			"Interval" 				"1.6"
+			"BreakTime"				"1"
+		}
+		"Wave31"
+		{
+			"Unit"					"creature_31"
+			"Times"					"1"
+			"Count"					"1"
+			"Interval" 				"0.8"
+			"BreakTime"				"1"
+		}
+		"Wave32"
+		{
+			"Unit"					"creature_32"
+			"Times"					"1"
+			"Count"					"1"
+			"Interval" 				"0.8"
+			"BreakTime"				"1"
+		}
+		"Wave33"
+		{
+			"Unit"					"creature_33"
+			"Times"					"1"
+			"Count"					"1"
+			"Interval" 				"0.8"
+			"BreakTime"				"1"
+		}
+		"Wave34"
+		{
+			"Unit"					"creature_34"
+			"Times"					"1"
+			"Count"					"1"
+			"Interval" 				"0.8"
+			"BreakTime"				"1"
+		}
+		"Wave35"
+		{
+			"Unit"					"creature_35"
+			"Times"					"1"
+			"Count"					"1"
+			"Interval" 				"0.8"
+			"BreakTime"				"1"
+		}
+		"Wave36"
+		{
+			"Unit"					"creature_36"
+			"Times"					"1"
+			"Count"					"1"
+			"Interval" 				"0.8"
+			"BreakTime"				"1"
+		}
+		"Wave37"
+		{
+			"Unit"					"creature_37"
+			"Times"					"1"
+			"Count"					"1"
+			"Interval" 				"0.8"
+			"BreakTime"				"1"
+		}
+		"Wave38"
+		{
+			"Unit"					"creature_38"
+			"Times"					"1"
+			"Count"					"1"
+			"Interval" 				"0.8"
+			"BreakTime"				"1"
+		}
+		"Wave39"
+		{
+			"Unit"					"creature_39"
+			"Times"					"1"
+			"Count"					"1"
+			"Interval" 				"0.8"
+			"BreakTime"				"1"
+		}
+		"Wave40"
+		{
+			"Unit"					"creature_40"
+			"Times"					"1"
+			"Count"					"1"
+			"Interval" 				"1.6"
+			"BreakTime"				"1"
+		}
+		"Wave41"
+		{
+			"Unit"					"creature_41"
+			"Times"					"1"
+			"Count"					"1"
+			"Interval" 				"0.8"
+			"BreakTime"				"1"
+		}
+		"Wave42"
+		{
+			"Unit"					"creature_42"
+			"Times"					"1"
+			"Count"					"1"
+			"Interval" 				"0.8"
+			"BreakTime"				"1"
+		}
+		"Wave43"
+		{
+			"Unit"					"creature_43"
+			"Times"					"1"
+			"Count"					"1"
+			"Interval" 				"0.8"
+			"BreakTime"				"1"
+		}
+		"Wave44"
+		{
+			"Unit"					"creature_44"
+			"Times"					"1"
+			"Count"					"1"
+			"Interval" 				"0.8"
+			"BreakTime"				"1"
+		}
+		"Wave45"
+		{
+			"Unit"					"creature_45"
+			"Times"					"1"
+			"Count"					"1"
+			"Interval" 				"0.8"
+			"BreakTime"				"1"
+		}
+		"Wave46"
+		{
+			"Unit"					"creature_46"
+			"Times"					"1"
+			"Count"					"1"
+			"Interval" 				"0.8"
+			"BreakTime"				"1"
+		}
+		"Wave47"
+		{
+			"Unit"					"creature_47"
+			"Times"					"1"
+			"Count"					"1"
+			"Interval" 				"0.8"
+			"BreakTime"				"1"
+		}
+		"Wave48"
+		{
+			"Unit"					"creature_48"
+			"Times"					"1"
+			"Count"					"1"
+			"Interval" 				"0.8"
+			"BreakTime"				"1"
+		}
+		"Wave49"
+		{
+			"Unit"					"creature_49"
+			"Times"					"1"
+			"Count"					"1"
+			"Interval" 				"0.8"
+			"BreakTime"				"1"
+		}
+		"Wave50"
+		{
+			"Unit"					"creature_50"
+			"Times"					"1"
+			"Count"					"1"
+			"Interval" 				"1.6"
+			"BreakTime"				"60"
+		}
+	}
+}
