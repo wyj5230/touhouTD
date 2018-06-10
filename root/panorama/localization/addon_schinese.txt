@@ -144,7 +144,7 @@
 	"quest_completed_msg"	"<font color='#FF8F0D'>完成任务:</font> {s:quest}"
 
 	// 商城
-	"avalon_store_name"			"商城"
+	"avalon_store_name"			"捐款"
 	"avalon_store_inventory"	"仓库"
 	"avalon_store_inventory_item_remaining"	"剩余数量："
 	"avalon_store_game_points"				"阴阳玉"
@@ -158,6 +158,11 @@
 	"avalon_store_sort"			"分类"
 	"avalon_store_please_input_your_redeem_code"	"请输入你的兑换码"
 	"avalon_store_goback_button"	"返回主界面"
+	"avalon_store_donate"		"捐款"
+
+	"avalon_store_donate_item01_desc"		"回馈<font color='#FFB207'>捐款金额 x 100</font>阴阳玉"
+	"avalon_store_donate_item02_desc"		"<font color='#FFB207'>捐款金额 >= 12元</font><br/>可获得一个月车票，不可叠加"
+	"avalon_store_donate_item03_desc"		"<font color='#FFB207'>捐款金额 >= 30元</font><br/>可获得一个月随机卡池扩展包，不可叠加"
 
 	"avalon_store_item_label_discount"	"折扣 {d:amount}%"
 	"avalon_store_item_label_only_buy_one"	"仅能购买一个"
