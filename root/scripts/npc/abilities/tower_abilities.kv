@@ -3507,6 +3507,7 @@
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
 		"AbilityCooldown"		"1"
 		// Stats
 		// ----------------------------------------------------------------
@@ -8062,32 +8063,12 @@
 
 		// Stats
 		// ----------------------------------------------------------------
-		"cast_range"		"AbilityCastRange"
-		"cooldown"		"AbilityCooldown"
-		
-		
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"attack_bonus"	"200 400 800 2000"
-			}
-			"02"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"cast_range"	"1000"
-			}
-			"03"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"cooldown"	"15"
-			}
-		}
-		
+		"AbilityCastRange"		"1000"
+
 		"precache"
 		{
-			"soundfile"			""
+			"soundfile"			"particles/heroes/thtd_keine/ability_keine_01_buff.vpcf"
+			"soundfile"			"particles/heroes/thtd_keine/ability_keine_01_stun.vpcf"
 		}
 
 		"OnSpellStart"
@@ -8125,7 +8106,7 @@
 		"BaseClass"				"ability_datadriven"
 		"AbilityTextureName"	"touhoutd/thtd_keine_02"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		"AbilityCooldown"		"1"
+		"AbilityCooldown"		"10"
 		// Stats
 		// ----------------------------------------------------------------
 		"AbilityManaCost"		"0"
@@ -8138,6 +8119,419 @@
 				"Target"		"TARGET"
 				"ScriptFile"	"scripts/vscripts/abilities/abilityKeine.lua"
 				"Function"		"OnKeine02SpellStart"
+			}
+		}
+	}
+
+	"thtd_keine_03"
+	{
+		"BaseClass"				"ability_datadriven"
+		"AbilityTextureName"	"touhoutd/thtd_keine_03"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PHYSICAL"
+		"MaxLevel"				"1"
+		"AbilityCooldown"		"10"
+		"AbilityManaCost"		"0"
+		// Stats
+		// ----------------------------------------------------------------
+		"AbilityCastRange"		"1000"
+		"AOERadius"				"1000"
+
+		"precache"
+		{
+			"particle"			"particles/heroes/thtd_keine/ability_keine_03.vpcf"
+			"soundfile"			""
+		}
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/abilities/abilityKeine.lua"
+				"Function"		"OnKeine03SpellStart"
+				"Target"		"POINT"
+			}
+		}
+
+		"OnProjectileHitUnit"
+		{
+			"DeleteOnHit"			"true"
+			"RunScript"
+			{
+				"ScriptFile"		"scripts/vscripts/abilities/abilityKeine.lua"
+				"Target"			"TARGET"
+				"Function"			"OnKeine04SwordHit"
+			}
+		}
+
+		"Modifiers"
+		{
+			"thtd_keine_03_debuff"
+			{	
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/abilities/abilityKeine.lua"
+						"Function"		"OnKeine03Destroy"
+					}
+				}
+			}
+
+			"modifier_keine_03_attack"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"Target"		"TARGET"
+						"ScriptFile"	"scripts/vscripts/abilities/abilityKeine.lua"
+						"Function"		"OnKeine03AttackLanded"
+					}
+				}
+			}
+		}
+	}
+
+	"thtd_keine_04"
+	{
+		"BaseClass"				"ability_datadriven"
+		"AbilityTextureName"	"touhoutd/thtd_keine_04"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PHYSICAL"
+		"AbilityCooldown"		"1"
+		// Stats
+		// ----------------------------------------------------------------
+		"AbilityManaCost"		"0"
+		"MaxLevel"				"1"
+
+		"precache"
+		{
+			"particle"			"particles/heroes/thtd_keine/ability_keine_04_sword.vpcf"
+			"particle"			"particles/heroes/thtd_keine/ability_keine_04_mirror.vpcf"
+		}
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"Target"		"TARGET"
+				"ScriptFile"	"scripts/vscripts/abilities/abilityKeine.lua"
+				"Function"		"OnKeine04SpellStart"
+			}
+		}
+	}
+
+	"thtd_medicine_01"
+	{
+		"BaseClass"				"ability_datadriven"
+		"AbilityTextureName"	"touhoutd/thtd_medicine_01"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PHYSICAL"
+		// Stats
+		// ----------------------------------------------------------------
+		"MaxLevel"				"5"
+
+		"precache"
+		{
+			"particle"	""
+		}
+		"Modifiers"
+		{
+			"passive_medicine_01_attack"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"Target"		"TARGET"
+						"ScriptFile"	"scripts/vscripts/abilities/abilityMedicine.lua"
+						"Function"		"OnMedicine01AttackLanded"
+					}
+				}
+			}
+
+			"modifier_medicine_01_slow"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%move_slow"
+				}
+			}
+		}
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"move_slow"		"-20 -25 -30 -40 -50"
+			}
+		}
+	}
+
+	"thtd_medicine_02"
+	{
+		"BaseClass"				"ability_datadriven"
+		"AbilityTextureName"	"touhoutd/thtd_medicine_02"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PHYSICAL"
+		"MaxLevel"				"1"
+		"AbilityCooldown"		"5"
+		"AbilityManaCost"		"0"
+		// Stats
+		// ----------------------------------------------------------------
+		"AbilityCastRange"		"1000"
+		"AOERadius"				"400"
+
+		"precache"
+		{
+			"particle"	"particles/heroes/thtd_medicine/ability_medicine_02.vpcf"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/abilities/abilityMedicine.lua"
+				"Function"		"OnMedicine02SpellStart"
+				"Target"		"POINT"
+			}
+		}
+	}
+
+	"thtd_star_01"
+	{
+		"BaseClass"				"ability_datadriven"
+		"AbilityTextureName"	"touhoutd/thtd_star_01"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"MaxLevel"				"5"
+		"AbilityCooldown"		"1"
+		"AbilityManaCost"		"10"
+		// Stats
+		// ----------------------------------------------------------------
+		"AbilityCastRange"		"1000"
+		"AOERadius"				"300"
+
+		"precache"
+		{
+			"particle"			"particles/heroes/thtd_star/ability_star_01.vpcf"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/abilities/abilityStar.lua"
+				"Function"		"OnStar01SpellStart"
+				"Target"		"POINT"
+			}
+		}
+
+		"Modifiers"
+		{
+			"modifier_star_01_slow"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%move_slow"
+				}
+			}
+		}
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"move_slow"		"-20 -30 -40 -50 -70"
+			}
+		}
+	}
+
+	"thtd_star_02"
+	{
+		"BaseClass"				"ability_datadriven"
+		"AbilityTextureName"	"touhoutd/thtd_star_02"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"MaxLevel"				"1"
+		"AbilityCooldown"		"5"
+		"AbilityManaCost"		"0"
+		// Stats
+		// ----------------------------------------------------------------
+		"AbilityCastRange"		"1000"
+		"AOERadius"				"300"
+
+		"precache"
+		{
+			"particle"	"particles/heroes/thtd_star/ability_star_01.vpcf"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/abilities/abilityStar.lua"
+				"Function"		"OnStar02SpellStart"
+				"Target"		"POINT"
+			}
+		}
+	}
+
+	"thtd_sunny_01"
+	{
+		"BaseClass"				"ability_datadriven"
+		"AbilityTextureName"	"touhoutd/thtd_sunny_01"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"MaxLevel"				"1"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
+		"AbilityCooldown"		"5.0"
+		"AbilityManaCost"		"10"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+
+		// Stats
+		// ----------------------------------------------------------------
+		"AbilityCastRange"		"1000"
+
+		"precache"
+		{
+			"soundfile"			"particles/heroes/sunny/ability_sunny_01_laser.vpcf"
+		}
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"		"scripts/vscripts/abilities/abilitySunny.lua"
+				"Function"			"OnSunny01SpellStart"
+				"Target"			"TARGET"
+			}
+		}
+	}
+
+	"thtd_sunny_02"
+	{
+		"BaseClass"				"ability_datadriven"
+		"AbilityTextureName"	"touhoutd/thtd_sunny_02"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"MaxLevel"				"1"
+		"AbilityCooldown"		"10"
+		"AbilityManaCost"		"0"
+		// Stats
+		// ----------------------------------------------------------------
+		"AbilityCastRange"		"1000"
+		"AOERadius"				"300"
+
+		"precache"
+		{
+			"particle"			"particles/heroes/sunny/ability_sunny_02.vpcf"
+		}
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/abilities/abilitySunny.lua"
+				"Function"		"OnSunny02SpellStart"
+				"Target"		"POINT"
+			}
+		}
+
+		"Modifiers"
+		{
+			"modifier_sunny_02_debuff"
+			{
+			}
+		}
+	}
+
+	"thtd_luna_01"
+	{
+		"BaseClass"				"ability_datadriven"
+		"AbilityTextureName"	"touhoutd/thtd_luna_01"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PHYSICAL"
+		
+		// Stats
+		// ----------------------------------------------------------------
+		"MaxLevel"				"1"
+
+		"precache"
+		{
+			"particle"			"particles/heroes/thtd_luna/ability_luna_01.vpcf"
+		}
+
+		"Modifiers"
+		{
+			"passive_luna_attack"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"Target"		"TARGET"
+						"ScriptFile"	"scripts/vscripts/abilities/abilityLuna.lua"
+						"Function"		"OnLuna01Attack"
+					}
+				}
+			}
+		}
+	}
+
+	"thtd_luna_02"
+	{
+		"BaseClass"				"ability_datadriven"
+		"AbilityTextureName"	"touhoutd/thtd_luna_02"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PHYSICAL"
+		"MaxLevel"				"1"
+		"AbilityCooldown"		"20"
+		"AbilityManaCost"		"0"
+		// Stats
+		// ----------------------------------------------------------------
+		"AbilityCastRange"		"1000"
+
+		"precache"
+		{
+			"particle"			"particles/heroes/thtd_luna/ability_luna_02_laser.vpcf"
+		}
+		
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/abilities/abilityLuna.lua"
+				"Function"		"OnLuna02SpellStart"
+				"Target"		"POINT"
 			}
 		}
 	}

@@ -110,7 +110,7 @@ function OnRin01Death(keys)
             damage_type = keys.ability:GetAbilityDamageType(), 
             damage_flags = DOTA_DAMAGE_FLAG_NONE
 	   	}
-	   	local olddamage = ReturnAfterTaxDamage(DamageTable)
+	   	local olddamage = ReturnAfterTaxDamageAfterAbility(DamageTable)
 		if olddamage > (caster:THTD_GetStar()*caster:THTD_GetPower()*5) then
 			DamageTable.damage = caster:THTD_GetStar()*caster:THTD_GetPower()*15
 		end

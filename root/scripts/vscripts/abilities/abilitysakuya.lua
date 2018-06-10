@@ -83,12 +83,13 @@ local sakuya_02_black_list =
 	"thtd_minamitsu_02",
 	"thtd_minamitsu_03",
 	"thtd_toramaru_01",
+	"thtd_toramaru_02",
 	"thtd_toramaru_03",
-	"thtd_toramaru_04",
 	"thtd_kanako_04",
 	"thtd_sanae_04",
 	"thtd_miko_04",
 	"thtd_keine_01",
+	"thtd_keine_03",
 }
 
 function IsInSakuya02BlackList(ability)

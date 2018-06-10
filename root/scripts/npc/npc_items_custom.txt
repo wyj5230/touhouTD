@@ -2316,6 +2316,96 @@
 	}
 
 	//-------------------------------------------------------------------------------------------------------------
+	// 斯塔·萨菲雅
+	"item_0056"
+	{
+		//-------------------------------------------------------------------------------------------------------------
+		// General
+		"ID" 								"8056"
+		"BaseClass" 						"item_datadriven"
+		"AbilityTextureName" 				"item_0056"
+		"AbilityBehavior" 					"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityCastRange"					"100"
+		"ItemCost"							"2000"
+		"Model"								"models/thd_hero/star/item/item_star.vmdl"
+		"ItemPurchasable"				    "0"
+		"ItemShareability"					"ITEM_PARTIALLY_SHAREABLE"
+		
+		//-------------------------------------------------------------------------------------------------------------
+		// Item Info
+		
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/abilities/abilityCommon.lua"
+				"Function"		"PutTowerToPoint"
+				"Target"		"POINT"
+			}
+		}
+	}
+
+	//-------------------------------------------------------------------------------------------------------------
+	// 桑妮·米尔克
+	"item_0057"
+	{
+		//-------------------------------------------------------------------------------------------------------------
+		// General
+		"ID" 								"8057"
+		"BaseClass" 						"item_datadriven"
+		"AbilityTextureName" 				"item_0057"
+		"AbilityBehavior" 					"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityCastRange"					"100"
+		"ItemCost"							"2000"
+		"Model"								"models/thd_hero/sunny/item/item_sunny.vmdl"
+		"ItemPurchasable"				    "0"
+		"ItemShareability"					"ITEM_PARTIALLY_SHAREABLE"
+		
+		//-------------------------------------------------------------------------------------------------------------
+		// Item Info
+		
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/abilities/abilityCommon.lua"
+				"Function"		"PutTowerToPoint"
+				"Target"		"POINT"
+			}
+		}
+	}
+
+	//-------------------------------------------------------------------------------------------------------------
+	// 露娜·切露德
+	"item_0058"
+	{
+		//-------------------------------------------------------------------------------------------------------------
+		// General
+		"ID" 								"8058"
+		"BaseClass" 						"item_datadriven"
+		"AbilityTextureName" 				"item_0058"
+		"AbilityBehavior" 					"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityCastRange"					"100"
+		"ItemCost"							"2000"
+		"Model"								"models/thd_hero/luna/item/item_luna.vmdl"
+		"ItemPurchasable"				    "0"
+		"ItemShareability"					"ITEM_PARTIALLY_SHAREABLE"
+		
+		//-------------------------------------------------------------------------------------------------------------
+		// Item Info
+		
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/abilities/abilityCommon.lua"
+				"Function"		"PutTowerToPoint"
+				"Target"		"POINT"
+			}
+		}
+	}
+
+	//-------------------------------------------------------------------------------------------------------------
 	// 上白泽慧音
 	"item_0061"
 	{
@@ -2327,7 +2417,7 @@
 		"AbilityBehavior" 					"DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityCastRange"					"100"
 		"ItemCost"							"5000"
-		"Model"								"models/thd_hero/keine/keine.vmdl"
+		"Model"								"models/thd_hero/keine/item/item_keine.vmdl"
 		"ItemPurchasable"				    "0"
 		"ItemShareability"					"ITEM_PARTIALLY_SHAREABLE"
 		
@@ -2418,6 +2508,36 @@
 		"AbilityCastRange"					"100"
 		"ItemCost"							"2000"
 		"Model"								"models/thd_hero/sizuha/item/item_sizuha.vmdl"
+		"ItemPurchasable"				    "0"
+		"ItemShareability"					"ITEM_PARTIALLY_SHAREABLE"
+		
+		//-------------------------------------------------------------------------------------------------------------
+		// Item Info
+		
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/abilities/abilityCommon.lua"
+				"Function"		"PutTowerToPoint"
+				"Target"		"POINT"
+			}
+		}
+	}
+
+	//-------------------------------------------------------------------------------------------------------------
+	// 梅蒂欣·梅兰可莉
+	"item_0092"
+	{
+		//-------------------------------------------------------------------------------------------------------------
+		// General
+		"ID" 								"8092"
+		"BaseClass" 						"item_datadriven"
+		"AbilityTextureName" 				"item_0092"
+		"AbilityBehavior" 					"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityCastRange"					"100"
+		"ItemCost"							"2000"
+		"Model"								"models/thd_hero/medicine/item/item_medicine.vmdl"
 		"ItemPurchasable"				    "0"
 		"ItemShareability"					"ITEM_PARTIALLY_SHAREABLE"
 		
@@ -2554,55 +2674,4 @@
 			}
 		}
 	}
-	//-------------------------------------------------------------------------------------------------------------
-	// Max Tower Tool
-	"item_2222"
-	{
-		//-------------------------------------------------------------------------------------------------------------
-		// General
-		"ID" 								"7222"
-		"BaseClass" 						"item_datadriven"
-		"AbilityTextureName" 				"item_2023"
-		"AbilityBehavior" 					"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetType"				"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitTargetTeam"				"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-		"AbilityCooldown"					"0"
-		"ItemCost"							"0"
-		"ItemSellable"						"0"
-
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/abilities/abilityItem.lua"
-				"Function"		"OnItem2222_SpellStart"
-				"Target"		"TARGET"
-			}
-		}
-	}
-	
-	//-------------------------------------------------------------------------------------------------------------
-	// Test Dummy Spawner
-	"item_6666"
-	{
-		//-------------------------------------------------------------------------------------------------------------
-		// General
-		"ID" 								"7666"
-		"BaseClass" 						"item_datadriven"
-		"AbilityTextureName" 				"item_z00000"
-		"AbilityBehavior" 					"DOTA_ABILITY_BEHAVIOR_POINT"
-		"AbilityCooldown"					"0"
-		"ItemCost"							"0"
-		"ItemSellable"						"0"
-
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/abilities/abilityItem.lua"
-				"Function"		"OnItem6666_SpellStart"
-				"Target"		"POINT"
-			}
-		}
-	}	
 }

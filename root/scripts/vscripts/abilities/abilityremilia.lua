@@ -129,7 +129,7 @@ function OnRemilia03SpellHit(keys)
 				damage_type = keys.ability:GetAbilityDamageType(), 
 		    	amage_flags = keys.ability:GetAbilityTargetFlags()
 		}
-   		local olddamage = ReturnAfterTaxDamage(damage_table)
+   		local olddamage = ReturnAfterTaxDamageAfterAbility(damage_table)
 		if olddamage > (target:GetHealth()*0.95) then
 			target:SetHealth(target:GetMaxHealth()*0.05)
 		else

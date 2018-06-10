@@ -1968,7 +1968,7 @@
 	{
 		// General
 		//----------------------------------------------------------------
-		"Model"						"models/thd_hero/remilia/remilia.vmdl"
+		"Model"						"models/new_touhou_model/remilia/remilia.vmdl"
 		"BaseClass"					"npc_dota_creature"
 		"Level"						"1"
 		"ModelScale" 				"1.0"
@@ -1984,7 +1984,7 @@
 		"Ability4"					"thtd_remilia_02"
 		"Ability5"					"thtd_remilia_03"
 		"Ability6"					"thtd_remilia_04"
-		"Ability7"					"ability_common_mana_regen_buff"
+		"Ability7"					"ability_common_power_buff"
 		"Ability8"					"ability_common_attack_buff"
 
 		// Armor
@@ -4080,6 +4080,278 @@
 		//----------------------------------------------------------------
 		"VisionDaytimeRange"		"800"
 		"VisionNighttimeRange"		"800"
+
+		// Team
+		//----------------------------------------------------------------
+		"TeamName"					"DOTA_TEAM_NEUTRALS"
+		
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+
+		"ConsideredHero"			"1"
+	}
+
+	"medicine"
+	{
+		// General
+		//----------------------------------------------------------------
+		"Model"						"models/thd_hero/medicine/medicine.vmdl"
+		"BaseClass"					"npc_dota_creature"
+		"Level"						"1"
+		"ModelScale" 				"0.8"
+		"IsAncient"					"1"
+
+		// Abilities
+		//----------------------------------------------------------------
+		"Ability1"					"ability_touhoutd_star_up"
+		"Ability2"					"ability_touhoutd_exp_up"
+		"Ability3"					"thtd_medicine_01"
+		"Ability4"					"thtd_medicine_02"
+		"Ability5"					""
+		"Ability6"					""
+		"Ability7"					"ability_common_power_buff"
+		"Ability8"					"ability_common_attack_buff"
+
+		// Armor
+		//----------------------------------------------------------------
+		"ArmorPhysical"				"0"
+
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"			"2"
+		"AttackDamageMax"			"2"
+		"AttackRate"				"0.6"
+		"AttackAnimationPoint"		"0.55"
+		"AttackAcquisitionRange"	"1000"
+		"AttackRange"				"1000"
+		"ProjectileModel"			"particles/heroes/thtd_medicine/ability_medicine_base_attack.vpcf"
+		"ProjectileSpeed"			"1500"
+
+		// Bounds
+		//----------------------------------------------------------------
+		"RingRadius"				"100"
+		"HealthBarOffset"			"128"
+
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"0"	
+
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"				"100"	
+		"StatusHealthRegen"			"0.0"
+		"StatusMana"				"0"
+		"StatusManaRegen"			"0"	 
+		
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"1200"
+		"VisionNighttimeRange"		"1200"
+
+		// Team
+		//----------------------------------------------------------------
+		"TeamName"					"DOTA_TEAM_NEUTRALS"
+		
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+
+		"ConsideredHero"			"1"
+	}
+
+	"luna"
+	{
+		// General
+		//----------------------------------------------------------------
+		"Model"						"models/thd_hero/luna/luna.vmdl"
+		"BaseClass"					"npc_dota_creature"
+		"Level"						"1"
+		"ModelScale" 				"1.0"
+		"IsAncient"					"1"
+
+		// Abilities
+		//----------------------------------------------------------------
+		"Ability1"					"ability_touhoutd_star_up"
+		"Ability2"					"ability_touhoutd_exp_up"
+		"Ability3"					"thtd_luna_01"
+		"Ability4"					"thtd_luna_02"
+		"Ability5"					"thtd_luna_03"
+		"Ability6"					""
+		"Ability7"					"ability_common_attack_speed_buff"
+		"Ability8"					"ability_common_attack_buff"
+
+		// Armor
+		//----------------------------------------------------------------
+		"ArmorPhysical"				"0"
+
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"2"
+		"AttackDamageMax"			"2"
+		"AttackRate"				"0.4"
+		"AttackAnimationPoint"		"0.4"
+		"AttackAcquisitionRange"	"1000"
+		"AttackRange"				"1000"
+
+		// Bounds
+		//----------------------------------------------------------------
+		"RingRadius"				"100"
+		"HealthBarOffset"			"128"
+
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"0"	
+
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"				"100"	
+		"StatusHealthRegen"			"0.0"
+		"StatusMana"				"10"
+		"StatusManaRegen"			"2.0"	 
+		
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"800"
+		"VisionNighttimeRange"		"800"
+
+		// Team
+		//----------------------------------------------------------------
+		"TeamName"					"DOTA_TEAM_NEUTRALS"
+		
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+
+		"ConsideredHero"			"1"
+	}
+
+	"sunny"
+	{
+		// General
+		//----------------------------------------------------------------
+		"Model"						"models/thd_hero/sunny/sunny.vmdl"
+		"BaseClass"					"npc_dota_creature"
+		"Level"						"1"
+		"ModelScale" 				"1.0"
+		"IsAncient"					"1"
+
+		// Abilities
+		//----------------------------------------------------------------
+		"Ability1"					"ability_touhoutd_star_up"
+		"Ability2"					"ability_touhoutd_exp_up"
+		"Ability3"					"thtd_sunny_01"
+		"Ability4"					"thtd_sunny_02"
+		"Ability5"					"thtd_sunny_03"
+		"Ability6"					""
+		"Ability7"					"ability_common_power_buff"
+		"Ability8"					"ability_common_attack_buff"
+
+		// Armor
+		//----------------------------------------------------------------
+		"ArmorPhysical"				"0"
+
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"2"
+		"AttackDamageMax"			"2"
+		"AttackRate"				"0.6"
+		"AttackAnimationPoint"		"0.55"
+		"AttackAcquisitionRange"	"1000"
+		"AttackRange"				"1000"
+
+		// Bounds
+		//----------------------------------------------------------------
+		"RingRadius"				"100"
+		"HealthBarOffset"			"128"
+
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"0"	
+
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"				"100"	
+		"StatusHealthRegen"			"0.0"
+		"StatusMana"				"10"
+		"StatusManaRegen"			"2.0"	 
+		
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"800"
+		"VisionNighttimeRange"		"800"
+
+		// Team
+		//----------------------------------------------------------------
+		"TeamName"					"DOTA_TEAM_NEUTRALS"
+		
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+
+		"ConsideredHero"			"1"
+	}
+
+	"star"
+	{
+		// General
+		//----------------------------------------------------------------
+		"Model"						"models/thd_hero/star/star.vmdl"
+		"BaseClass"					"npc_dota_creature"
+		"Level"						"1"
+		"ModelScale" 				"1.0"
+		"IsAncient"					"1"
+
+		// Abilities
+		//----------------------------------------------------------------
+		"Ability1"					"ability_touhoutd_star_up"
+		"Ability2"					"ability_touhoutd_exp_up"
+		"Ability3"					"thtd_star_01"
+		"Ability4"					"thtd_star_02"
+		"Ability5"					"thtd_star_03"
+		"Ability6"					""
+		"Ability7"					"ability_common_mana_regen_buff"
+		"Ability8"					"ability_common_attack_buff"
+
+		// Armor
+		//----------------------------------------------------------------
+		"ArmorPhysical"				"0"
+
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"			"2"
+		"AttackDamageMax"			"2"
+		"AttackRate"				"0.8"
+		"AttackAnimationPoint"		"0.55"
+		"AttackAcquisitionRange"	"1000"
+		"AttackRange"				"1000"
+		"ProjectileModel"			"particles/base_attacks/ranged_tower_good.vpcf"
+		"ProjectileSpeed"			"1500"
+
+		// Bounds
+		//----------------------------------------------------------------
+		"RingRadius"				"100"
+		"HealthBarOffset"			"128"
+
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"0"	
+
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"				"100"	
+		"StatusHealthRegen"			"0.0"
+		"StatusMana"				"10"
+		"StatusManaRegen"			"2.0"	 
+		
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"1200"
+		"VisionNighttimeRange"		"1200"
 
 		// Team
 		//----------------------------------------------------------------
