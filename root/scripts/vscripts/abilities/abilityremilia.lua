@@ -167,6 +167,15 @@ function OnRemilia03Destroy(keys)
 
 	local count = 0
 
+	ability = caster:FindAbilityByName("thtd_remilia_01")
+		if ability~=nil then
+			ability:EndCooldown()
+		end
+	ability = caster:FindAbilityByName("thtd_remilia_03")
+		if ability~=nil then
+			ability:EndCooldown()
+		end
+	
 	caster:EmitSound("Sound_THTD.thtd_remilia_04")
 	
 	caster:SetContextThink(DoUniqueString("ability_remilia_03_effect_destroy"), 

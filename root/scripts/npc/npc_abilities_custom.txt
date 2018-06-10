@@ -152,7 +152,7 @@
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
 		"MaxLevel"				"1"
 		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_3"
-		"AbilityCooldown"		"1.0"
+		"AbilityCooldown"		"60.0"
 		"AbilityManaCost"		"0"
 
 		// Stats
@@ -210,7 +210,7 @@
 		"AbilityCooldown"		"0.3"
 		"MaxLevel"				"1"
 		"AbilityManaCost"		"0"
-		"AbilityGoldCost"		"1"
+		"AbilityGoldCost"		"500"
 
 		"OnSpellStart"
 		{
@@ -231,7 +231,7 @@
 		"AbilityCooldown"		"0.3"
 		"MaxLevel"				"1"
 		"AbilityManaCost"		"0"
-		"AbilityGoldCost"		"1"
+		"AbilityGoldCost"		"2500"
 
 		"OnSpellStart"
 		{
@@ -252,7 +252,7 @@
 		"AbilityCooldown"		"0.3"
 		"MaxLevel"				"1"
 		"AbilityManaCost"		"0"
-		"AbilityGoldCost"		"1"
+		"AbilityGoldCost"		"500"
 
 		"OnSpellStart"
 		{
@@ -273,7 +273,7 @@
 		"AbilityCooldown"		"0.3"
 		"MaxLevel"				"1"
 		"AbilityManaCost"		"0"
-		"AbilityGoldCost"		"1"
+		"AbilityGoldCost"		"2500"
 
 		"OnSpellStart"
 		{
@@ -294,7 +294,7 @@
 		"AbilityCooldown"		"0.3"
 		"MaxLevel"				"1"
 		"AbilityManaCost"		"0"
-		"AbilityGoldCost"		"1"
+		"AbilityGoldCost"		"1000"
 
 		"OnSpellStart"
 		{
@@ -315,7 +315,7 @@
 		"AbilityCooldown"		"0.3"
 		"MaxLevel"				"1"
 		"AbilityManaCost"		"0"
-		"AbilityGoldCost"		"1"
+		"AbilityGoldCost"		"1800"
 
 		"OnSpellStart"
 		{
@@ -336,7 +336,7 @@
 		"AbilityCooldown"		"0.3"
 		"MaxLevel"				"1"
 		"AbilityManaCost"		"0"
-		"AbilityGoldCost"		"1"
+		"AbilityGoldCost"		"7200"
 
 		"OnSpellStart"
 		{
@@ -357,7 +357,7 @@
 		"AbilityCooldown"		"0.3"
 		"MaxLevel"				"1"
 		"AbilityManaCost"		"0"
-		"AbilityGoldCost"		"1"
+		"AbilityGoldCost"		"35000"
 
 		"OnSpellStart"
 		{

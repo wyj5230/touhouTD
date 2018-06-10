@@ -39,7 +39,7 @@ function OnTouhouReleaseTowerSpellStart(keys)
 	end
 end
 
-THTD_MAX_BONUS_TOWER = 12
+THTD_MAX_BONUS_TOWER = 4
 
 local thtd_skin_list = 
 {
@@ -227,7 +227,49 @@ function StarUp(keys)
 		return 
 	end
 
-	caster:THTD_UpgradeStar()
+	composeItem = {}
+	
+	for item_slot = 0,5 do
+		item = caster:GetItemInSlot(item_slot)
+		if item ~= nil and item.thtd_exp_up_lock ~= 0 then
+			local tower = item:THTD_GetTower()
+			if tower ~= nil then
+				if tower:THTD_GetStar() == star and tower:THTD_GetLevel() == THTD_MAX_LEVEL then
+					table.insert(composeItem,item)
+				end
+			end
+			if item:GetAbilityName() == THTD_STAR_ITEM[star] or item:GetAbilityName() == THTD_SEIGA_STAR_ITEM[star] then
+				table.insert(composeItem,item)
+			end
+		end
+	end
+
+	for item_slot = 0,5 do
+		item = hero:GetItemInSlot(item_slot)
+		if item ~= nil and item.thtd_exp_up_lock ~= 0 then
+			local tower = item:THTD_GetTower()
+			if tower ~= nil then
+				if tower:THTD_GetStar() == star and tower:THTD_GetLevel() == THTD_MAX_LEVEL then
+					table.insert(composeItem,item)
+				end
+			end
+			if item:GetAbilityName() == THTD_STAR_ITEM[star] or item:GetAbilityName() == THTD_SEIGA_STAR_ITEM[star] then
+				table.insert(composeItem,item)
+			end
+		end
+	end
+
+	if (#composeItem >= star) then
+		for i=1,star do
+			composeItem[i]:THTD_RemoveSelf()
+		end
+		caster:THTD_UpgradeStar()
+	else
+		if player then
+			EmitSoundOnClient("Sound_THTD.thtd_star_up_fail",player)
+		end
+	end
+	composeItem = {}
 end
 
 function ExpUp(keys)
@@ -255,7 +297,6 @@ function ExpUp(keys)
 	else
 		if player then
 			EmitSoundOnClient("Sound_THTD.thtd_star_up_fail",player)
-			caster:THTD_AddExp(80000)
 		end
 	end
 end
@@ -360,13 +401,13 @@ function DrawNormalCard(keys)
 
 	local chance = RandomInt(0,100)
 	local item = nil
-	if chance >20 then
+	if chance <=20 then
 		if #drawList[2] > 0 then
 			item = CreateItem(drawList[2][RandomInt(1,#drawList[2])], nil, nil)
 		else
 			PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), 1000 , true, DOTA_ModifyGold_SellItem) 
 		end
-	elseif chance <= 20 then
+	elseif chance > 20 then
 		if #drawList[1] > 0 then
 			item = CreateItem(drawList[1][RandomInt(1,#drawList[1])], nil, nil)
 		else
@@ -475,17 +516,23 @@ function DrawSeniorCard(keys)
 
 	local chance = RandomInt(0,100)
 	local item = nil
-	if chance <=25 then
+	if chance <=5 then
 		if #drawList[4] > 0 then
 			item = CreateItem(drawList[4][RandomInt(1,#drawList[4])], nil, nil)
 		else
 			PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), 5000 , true, DOTA_ModifyGold_SellItem) 
 		end
-	elseif chance > 25 then
+	elseif chance <= 25 then
 		if #drawList[3] > 0 then
 			item = CreateItem(drawList[3][RandomInt(1,#drawList[3])], nil, nil)
 		else
 			PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), 2500 , true, DOTA_ModifyGold_SellItem) 
+		end
+	elseif chance > 25 then
+		if #drawList[2] > 0 then
+			item = CreateItem(drawList[2][RandomInt(1,#drawList[2])], nil, nil)
+		else
+			PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), 1000 , true, DOTA_ModifyGold_SellItem) 
 		end
 	end
 

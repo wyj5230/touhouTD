@@ -21,48 +21,17 @@ THTD_EntitiesRectInner = {
 THTD_EntitiesRectOuter = {
 }
 TotalWave = 0
-MaxWave = 69
 function SpawnSystem:InitSpawn()
 	SpawnSystem.Spawner = LoadKeyValues("scripts/npc/Spawner.txt")
-	
-	if GameRules:GetCustomGameDifficulty() == 1 then
-		MaxWave = 29
-	elseif GameRules:GetCustomGameDifficulty() == 2 then
-		MaxWave = 39
-	elseif GameRules:GetCustomGameDifficulty() == 3 then
-		MaxWave = 49
-	elseif GameRules:GetCustomGameDifficulty() == 4 then
-		MaxWave = 59
-	end
 	for i=1,200 do
-		if i < 25 then
-			SpawnSystem.Spawner["Attacking"]["Wave"..tostring(50+i)] = 
-			{
-				["Unit"] = "creature_unlimited",
-				["Times"] =	1,
-				["BreakTime"] = 1,
-				["Count"] = 1,
-				["Interval"] = 0.5,
-			}
-		elseif i < MaxWave then
-			SpawnSystem.Spawner["Attacking"]["Wave"..tostring(50+i)] = 
-			{
-				["Unit"] = "creature_unlimited",
-				["Times"] =	30,
-				["BreakTime"] = 15,
-				["Count"] = 1,
-				["Interval"] = 0.5,
-			}		
-		else
-			SpawnSystem.Spawner["Attacking"]["Wave"..tostring(50+i)] = 
-			{
-				["Unit"] = "creature_unlimited",
-				["Times"] =	50,
-				["BreakTime"] = 150000,
-				["Count"] = 1,
-				["Interval"] = 0.5,
-			}
-		end
+		SpawnSystem.Spawner["Attacking"]["Wave"..tostring(50+i)] = 
+		{
+			["Unit"] = "creature_unlimited",
+			["Times"] =	30,
+			["BreakTime"] = 15,
+			["Count"] = 1,
+			["Interval"] = 0.5,
+		}
 	end
 	SpawnSystem.DungeonSpawner = SpawnSystem.Spawner["Dungeon"]
 	local PlayerNum  = 0
@@ -181,6 +150,41 @@ function SpawnSystem:StopWave(index)
 		return
 	end
 	spawner[index].isStop = true
+end
+
+function SpawnSystem:ResumeWave(index)
+	local spawner  = SpawnSystem.AttackingSpawner
+
+	THTD_EntitiesRectInner[index-1] = {}
+	if spawner[index] == nil then
+		return
+	end
+	spawner[index].isStop = false
+end
+
+function SpawnSystem:SkipWaveTime(index)
+	local spawner  = SpawnSystem.AttackingSpawner
+
+	THTD_EntitiesRectInner[index-1] = {}
+	if spawner[index] == nil then 
+		return
+	end
+    
+    local spawner  = SpawnSystem.AttackingSpawner
+    local wave = spawner[index].CurWave - 1
+    
+    SpawnSystem.Spawner["Attacking"]["Wave"..tostring(wave)]["BreakTime"] = 0
+    
+    local count = 0
+    for k,v in pairs(Entities:FindAllByClassname("npc_dota_creature")) do
+        if string.find(v:GetUnitName(), 'creature_') and v~=nil and v:IsNull()==false and v:IsAlive() and v.thtd_player_index == index then
+            count = count +1
+        end
+    end
+
+    if count == 0 then 
+        SpawnSystem.Spawner["Attacking"]["Wave"..tostring(wave)]["Times"] = 0
+    end
 end
 
 thtd_next_bossName_list = 

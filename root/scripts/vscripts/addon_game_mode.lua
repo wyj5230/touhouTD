@@ -75,11 +75,11 @@ function Precache( context )
 	PrecacheResource( "particle", "particles/econ/items/lina/lina_ti6/lina_ti6_laguna_blade.vpcf",context )
 	PrecacheResource( "particle", "particles/thd2/items/item_yatagarasu.vpcf",context )
 	PrecacheResource( "particle", "particles/heroes/daiyousei/ability_daiyousei_02.vpcf",context )
-	PrecacheResource( "particle", "particles/heroes/cirno/ability_cirno_02.vpcf",context )	
+	PrecacheResource( "particle", "particles/heroes/cirno/ability_cirno_02.vpcf",context )
 
-	PrecacheResource( "particle", "particles/heroes/yumemi/ability_yumemi_04_exolosion.vpcf",context )	
-	PrecacheResource( "particle", "particles/thd2/items/item_donation_box.vpcf",context )	
-	PrecacheResource( "particle", "particles/thtd_item/ability_item_2022.vpcf",context )	
+	PrecacheResource( "particle", "particles/heroes/yumemi/ability_yumemi_04_exolosion.vpcf",context )
+	PrecacheResource( "particle", "particles/thd2/items/item_donation_box.vpcf",context )
+	PrecacheResource( "particle", "particles/thtd_item/ability_item_2022.vpcf",context )
 
 	PrecacheResource( "particle", "particles/thtd/emoji/thtd_msg_hongliange.vpcf",context )
 	PrecacheResource( "particle", "particles/thd2/environment/death/act_hero_die.vpcf",context )
@@ -104,11 +104,11 @@ HERO_MAX_LEVEL = 10
 
 HERO_EXP_TABLE={0}
 
--- 总和5400
--- 经验分配规则 保底 1X每只30点 2X每只20点，3X每只10点，4X每只6点，5X每只3点
--- 单吃一个兵经验 300点 200点 100点 60点 30点
--- 经验获取率1X 100% 2X 2/3 3X 1/3 4X 1/5 5X 1/10 
--- 素材培养 （1000+素材卡牌经验/5）* 星级
+-- Sum 5400
+-- Experience allocation rules Guarantee 1X 30 points 2X 20 points, 3X 10 points, 4X 6 points, 5X 3 points
+-- Eat a tower experience 300 points 200 points 100 points 60 points 30 points
+-- Experience rate 1X 100% 2X 2/3 3X 1/3 4X 1/5 5X 1/10
+-- Material Training (1000+Material Card Experience/5)*star
 
 exp={200,300,400,500,600,700,800,900,1000}
 xp=0
@@ -140,7 +140,7 @@ function CTHTDGameMode:InitGameMode()
 
 
 	ListenToGameEvent('entity_killed', Dynamic_Wrap(CTHTDGameMode, 'OnEntityKilled'), self)
-  
+
   	ListenToGameEvent('player_connect_full', Dynamic_Wrap(CTHTDGameMode, 'AutoAssignPlayer'), self)
 
   	ListenToGameEvent('player_disconnect', Dynamic_Wrap(CTHTDGameMode, 'CleanupPlayer'), self)
@@ -218,7 +218,7 @@ function CTHTDGameMode:InitGameMode()
 		end
 	end
 	CustomNetTables:SetTableValue( "CustomGameInfo", "AbilitiesGoldCost", abilitiesGoldCost)
-	
+
 	CustomGameEventManager:RegisterListener("select_card",
 		function(keys,data)
 			local player = PlayerResource:GetPlayer(data.PlayerID)
@@ -226,7 +226,7 @@ function CTHTDGameMode:InitGameMode()
 			local caster = player:GetAssignedHero()
 			if caster == nil then return end
 			local itemName = data.itemname
-			if itemName ~= nil then 
+			if itemName ~= nil then
 				if caster.thtd_last_select_item~=nil and caster.thtd_last_select_item:IsNull()==false then
 					caster:RemoveItem(caster.thtd_last_select_item)
 					local item = CreateItem(itemName, nil, nil)
@@ -236,7 +236,7 @@ function CTHTDGameMode:InitGameMode()
 
 						-- 回收
 						local itemNameRelease = item:GetAbilityName()
-						caster:SetContextThink(DoUniqueString("thtd_item_release"), 
+						caster:SetContextThink(DoUniqueString("thtd_item_release"),
 							function()
 								if item==nil or item:IsNull() then
 									THTD_AddItemToListByName(caster:GetPlayerOwnerID(),itemNameRelease)
@@ -295,7 +295,7 @@ function CTHTDGameMode:InitGameMode()
 	)
 end
 
-local shopEntitiesOrigin = 
+local shopEntitiesOrigin =
 {
 	[1] = Vector(-2454,2989,142),
 	[2] = Vector(2227,2922,142),
@@ -303,7 +303,7 @@ local shopEntitiesOrigin =
 	[4] = Vector(-2454,-2867,142),
 }
 
-local shopEntitiesForward = 
+local shopEntitiesForward =
 {
 	[1] = Vector(-math.cos(math.pi/4),-math.sin(math.pi/4),0),
 	[2] = Vector(math.cos(math.pi/4),-math.sin(math.pi/4),0),
@@ -311,7 +311,7 @@ local shopEntitiesForward =
 	[4] = Vector(-math.cos(math.pi/4),math.sin(math.pi/4),0),
 }
 
-local shopFoodOrigin = 
+local shopFoodOrigin =
 {
 	[1] = Vector(-2016,2688,137),
 	[2] = Vector(2016,2688,137),
@@ -319,7 +319,7 @@ local shopFoodOrigin =
 	[4] = Vector(-2016,-2688,142),
 }
 
-local shopSpawnOrigin = 
+local shopSpawnOrigin =
 {
 	[1] = Vector(-3424,2816,140),
 	[2] = Vector(3424,2816,140),
@@ -327,7 +327,7 @@ local shopSpawnOrigin =
 	[4] = Vector(-3424,-2816,140),
 }
 
-local vote_disconnect_player = 
+local vote_disconnect_player =
 {
 	[1] = 0,
 	[2] = 0,
@@ -366,17 +366,17 @@ function CTHTDGameMode:OnGameRulesStateChange(keys)
 		for i=0, PlayerResource:GetPlayerCount() do
 			local player = PlayerResource:GetPlayer(i)
 			if player then
-				PlayerResource:ModifyGold(player:GetPlayerID(), difficulty*1000 , true, DOTA_ModifyGold_Unspecified) 
+				PlayerResource:ModifyGold(player:GetPlayerID(), difficulty*1000 , true, DOTA_ModifyGold_Unspecified)
 			end
 		end
 		print("[Custom Game Difficulty]", GameRules:GetCustomGameDifficulty())
 
   	elseif newState == DOTA_GAMERULES_STATE_PRE_GAME then
-		self:GameSetHeroOriginPosition()
-		if GameRules:IsCheatMode() and IsInToolsMode() == false then
-			local base = Entities:FindByName(nil, "dota_goodguys_fort")
-			base:ForceKill(false)
-		end
+			self:GameSetHeroOriginPosition()
+			if false and GameRules:IsCheatMode() and IsInToolsMode() == false then
+				local base = Entities:FindByName(nil, "dota_goodguys_fort")
+				base:ForceKill(false)
+			end
   	elseif newState == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
   		self:THTD_InitCreepMsgEffect(PlayerResource:GetPlayerCount()*40)
   		SpawnSystem:InitSpawn()
@@ -385,7 +385,7 @@ function CTHTDGameMode:OnGameRulesStateChange(keys)
 		local last_wave = 1
 		local player_count = PlayerResource:GetPlayerCount()
 
-  		GameRules:GetGameModeEntity():SetContextThink(DoUniqueString("thtd_creep_count"), 
+  		GameRules:GetGameModeEntity():SetContextThink(DoUniqueString("thtd_creep_count"),
 			function()
 				if GameRules:IsGamePaused() then return 0.03 end
 				if SpawnSystem:GetWave() <= 51 then
@@ -419,7 +419,7 @@ function CTHTDGameMode:OnGameRulesStateChange(keys)
 					is_wave_first_over_52 = true
 				end
 				return 1.0
-			end, 
+			end,
 		1.0)
   	end
 end
@@ -454,18 +454,18 @@ function CTHTDGameMode:GameSetHeroOriginPosition()
 	for i=0, PlayerResource:GetPlayerCount() do
 		local player = PlayerResource:GetPlayer(i)
 		if player then
-			player:SetContextThink(DoUniqueString("thtd_wait_GameSetHeroOriginPosition"), 
+			player:SetContextThink(DoUniqueString("thtd_wait_GameSetHeroOriginPosition"),
 				function()
 					local hero = player:GetAssignedHero()
 					if hero then
 						local origin = shopSpawnOrigin[i+1]
 						hero:SetOrigin(origin)
 						PlayerResource:SetCameraTarget(i,hero)
-						hero:SetContextThink(DoUniqueString("GameSetHeroOriginPosition"), 
+						hero:SetContextThink(DoUniqueString("GameSetHeroOriginPosition"),
 							function()
 								PlayerResource:SetCameraTarget(i,nil)
 							end,
-						0.5) 
+						0.5)
 						return nil
 					else
 						return 0.03
@@ -477,7 +477,7 @@ function CTHTDGameMode:GameSetHeroOriginPosition()
 end
 
 function CTHTDGameMode:AutoAssignPlayer(keys)
-	
+
 end
 
 function CTHTDGameMode:OnEntityKilled(keys)
@@ -502,7 +502,7 @@ function CTHTDGameMode:OnEntityKilled(keys)
 		local expUnits = {}
 
 		for k,v in pairs(targets) do
-			if v ~= nil and v:IsNull()==false and v:THTD_IsTower() and v:THTD_GetLevel() < THTD_MAX_LEVEL and v:GetOwner():GetPlayerID() == playerid then 
+			if v ~= nil and v:IsNull()==false and v:THTD_IsTower() and v:THTD_GetLevel() < THTD_MAX_LEVEL and v:GetOwner():GetPlayerID() == playerid then
 				table.insert(expUnits,v)
 			end
 		end
@@ -553,16 +553,16 @@ function CTHTDGameMode:OnHeroSpawned(keys)
 		hero.thtd_game_info["creep_count"] = 0
 		hero.thtd_game_info["food_count"] = 0
 		if AcceptExtraMode == true then
-			hero.thtd_game_info["food_count_max"] = 12
+			hero.thtd_game_info["food_count_max"] = 14
 		else
 			hero.thtd_game_info["food_count_max"] = 12
 		end
 		hero.thtd_game_info["creature_kill_count"] = 0
-		
+
 		CTHTDGameMode:THTD_CreateCreepEffect(0,hero)
 
 		local sound_lock = false
-		hero:SetContextThink(DoUniqueString("thtd_combo_voice_array"), 
+		hero:SetContextThink(DoUniqueString("thtd_combo_voice_array"),
 			function()
 				if hero:IsStunned() then return nil end
 				for k,v in pairs(hero.thtd_combo_voice_array) do
@@ -577,7 +577,7 @@ function CTHTDGameMode:OnHeroSpawned(keys)
 							local tower = v["unit"]
 							EmitSoundOn(THTD_GetVoiceEvent(tower:GetUnitName(),"combo."..v["comboName"]),tower)
 						end
-				  		hero:SetContextThink(DoUniqueString("thtd_creep_count"), 
+				  		hero:SetContextThink(DoUniqueString("thtd_creep_count"),
 							function()
 								if GameRules:IsGamePaused() then return 0.03 end
 								sound_lock = false
@@ -598,7 +598,7 @@ function CTHTDGameMode:OnHeroSpawned(keys)
 
 		hero.thtd_player_id = heroPlayerID
 
-  		hero:SetContextThink(DoUniqueString("thtd_creep_count"), 
+  		hero:SetContextThink(DoUniqueString("thtd_creep_count"),
 			function()
 				if GameRules:IsGamePaused() then return 0.03 end
 				if SpawnSystem:GetWave() == 0 then return 0.03 end
@@ -608,9 +608,10 @@ function CTHTDGameMode:OnHeroSpawned(keys)
 					if last_wave <= 51 then
 						QuestSystem:Update( heroPlayerID, {Type="wave_clear", Wave=last_wave} )
 					else
-						QuestSystem:Update( heroPlayerID, {Type="endless_wave_clear", Wave=last_wave-50} ) 
+						QuestSystem:Update( heroPlayerID, {Type="endless_wave_clear", Wave=last_wave-50} )
 					end
 				end
+                
 				if SpawnSystem:GetWave() <= 51 then
 					local entities = Entities:FindAllByClassname("npc_dota_creature")
 					local count = 0
@@ -620,7 +621,7 @@ function CTHTDGameMode:OnHeroSpawned(keys)
 							count = count + 1
 						end
 					end
-					self:THTD_CreateCreepEffect(count,hero)
+					CTHTDGameMode:THTD_CreateCreepEffect(count,hero)
 
 					if (hero:GetPlayerOwner()==nil or hero:GetPlayerOwner():IsNull()) and playerConnect == true then
 						G_disconnect_player_count = G_disconnect_player_count + 1
@@ -638,7 +639,7 @@ function CTHTDGameMode:OnHeroSpawned(keys)
 							for k,v in pairs(entities) do
 								if v:GetOwner() == hero then
 									v:SetOrigin(Vector(0,0,0))
-									v:AddNoDraw() 
+									v:AddNoDraw()
 									v:AddNewModifier(hero, nil, "modifier_touhoutd_release_hidden", {})
 								end
 							end
@@ -653,22 +654,22 @@ function CTHTDGameMode:OnHeroSpawned(keys)
 				elseif SpawnSystem:GetWave() == 52 and is_wave_first_over_52 ~= true then
 					hero.thtd_game_info["creature_kill_count"] = 0
 					is_wave_first_over_52 = true
-					QuestSystem:Update( heroPlayerID, {Type="finished_game",Difficulty=GameRules:GetCustomGameDifficulty()} ) 
+					QuestSystem:Update( heroPlayerID, {Type="finished_game",Difficulty=GameRules:GetCustomGameDifficulty()} )
 
 				elseif SpawnSystem:GetWave() >= 52 then
-
+					local winner = GameRules:IsCheatMode() and DOTA_TEAM_BADGUYS or DOTA_TEAM_GOODGUYS
 					if AcceptExtraMode == true then
-						if SpawnSystem:GetWave() > 121 then 
+						if SpawnSystem:GetWave() > 121 then
 						 	ServerEvent( "set_can_select_free_mode", heroPlayerID, {} )
-						 	GiveTouhouGamePoints(heroPlayerID, math.floor(50+hero.thtd_game_info["creature_kill_count"]/5*(1+(GameRules:GetCustomGameDifficulty()-1)*0.5)))
-						 	GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS)
+						 	GiveTouhouGamePoints(heroPlayerID, math.floor(50+hero.thtd_game_info["creature_kill_count"]*(1+(GameRules:GetCustomGameDifficulty()-1)*0.5)))
+						 	GameRules:SetGameWinner(winner)
 						 	return nil
 						end
 					else
-						if SpawnSystem:GetWave() > (80+(GameRules:GetCustomGameDifficulty()-1)*10) then 
+						if SpawnSystem:GetWave() > (80+(GameRules:GetCustomGameDifficulty()-1)*10) then
 						 	ServerEvent( "set_can_select_free_mode", heroPlayerID, {} )
-						 	GiveTouhouGamePoints(heroPlayerID, math.floor(50+hero.thtd_game_info["creature_kill_count"]/5*(1+(GameRules:GetCustomGameDifficulty()-1)*0.5)))
-						 	GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS)
+						 	GiveTouhouGamePoints(heroPlayerID, math.floor(50+hero.thtd_game_info["creature_kill_count"]*(1+(GameRules:GetCustomGameDifficulty()-1)*0.5)))
+						 	GameRules:SetGameWinner(winner)
 						 	return nil
 						end
 					end
@@ -677,19 +678,21 @@ function CTHTDGameMode:OnHeroSpawned(keys)
 						local entities = Entities:FindAllByClassname("npc_dota_creature")
 						local count = 0
 						for k,v in pairs(entities) do
-							local findNum =  string.find(v:GetUnitName(), 'creature_unlimited')
-							if findNum ~= nil and v~=nil and v:IsNull()==false and v:IsAlive() and v.thtd_player_index == heroPlayerID then
-								count = count + 1
-							end
-							local findNum2 =  string.find(v:GetUnitName(), 'creature_alice')
-							if findNum2 ~= nil and v~=nil and v:IsNull()==false and v:IsAlive() and v.thtd_player_index == heroPlayerID and v.thtd_is_outer then
-								count = count + 1
-							end
-							local findNum3 =  string.find(v:GetUnitName(), 'creature_bosses')
-							if findNum3 ~= nil and v~=nil and v:IsNull()==false and v:IsAlive() and v.thtd_player_index == heroPlayerID then
-								count = count + 1
-							end
-						end
+                            local unitName = v:GetUnitName()
+                            local found_unlimited = string.find(unitName, 'creature_unlimited')
+                            local found_alice = string.find(unitName, 'creature_alice')
+                            local found_bosses =  string.find(unitName, 'creature_bosses')
+                            if found_unlimited or found_alice or found_alice then
+                                if v~=nil and v:IsNull()==false and v:IsAlive() and v.thtd_player_index == heroPlayerID then
+                                    if not found_alice then
+                                        count = count +1
+                                    elseif v.thtd_is_outer then
+                                        count = count +1
+                                    end
+                                end
+                            end
+                        end    
+
 						if count > 30 then
 							for k,v in pairs(entities) do
 								local findNum = string.find(v:GetUnitName(), 'creature_unlimited')
@@ -699,7 +702,7 @@ function CTHTDGameMode:OnHeroSpawned(keys)
 									v:ForceKill(false)
 								elseif v~=nil and v:IsNull()==false and v:IsAlive() and v:GetOwner() == hero then
 									v:SetOrigin(Vector(0,0,0))
-									v:AddNoDraw() 
+									v:AddNoDraw()
 									v:AddNewModifier(hero, nil, "modifier_touhoutd_release_hidden", {})
 								end
 							end
@@ -728,7 +731,7 @@ function CTHTDGameMode:OnHeroSpawned(keys)
 					end
 				end
 				return 1.0
-			end, 
+			end,
 		1.0)
 
 		hero:SetModelScale(1.4)
@@ -779,7 +782,7 @@ function CTHTDGameMode:OnHeroSpawned(keys)
 		hero:AddItem(item)
 		hero.choose_item_3 = item
 
-		if HasTouhouVIP(heroPlayerID) then
+		if true or HasTouhouVIP(heroPlayerID) then
 			item = CreateItem("item_1010", hero, hero)
 			hero:AddItem(item)
 		end
@@ -788,18 +791,18 @@ function CTHTDGameMode:OnHeroSpawned(keys)
 		self:THTD_InitFoodMsgEffect(hero)
 
 		local shop = CreateUnitByName(
-			"minoriko_shop", 
-			shopEntitiesOrigin[hero:GetPlayerOwnerID()+1], 
-			false, 
-			hero, 
-			hero, 
-			hero:GetTeam() 
+			"minoriko_shop",
+			shopEntitiesOrigin[hero:GetPlayerOwnerID()+1],
+			false,
+			hero,
+			hero,
+			hero:GetTeam()
 		)
-		shop:SetControllableByPlayer(hero:GetPlayerOwnerID(), true) 
+		shop:SetControllableByPlayer(hero:GetPlayerOwnerID(), true)
 		shop:SetHasInventory(true)
 		shop.hero = hero
 
-		shop:SetContextThink(DoUniqueString("shop_think"), 
+		shop:SetContextThink(DoUniqueString("shop_think"),
 			function()
 				if GameRules:IsGamePaused() then return 0.03 end
 				shop:MoveToPosition(shop:GetOrigin()+shopEntitiesForward[hero:GetPlayerOwnerID()+1])
@@ -827,30 +830,30 @@ function CTHTDGameMode:DisVoteKickPlayer(num)
 	vote_disconnect_player[num] = vote_disconnect_player[num] - 1
 end
 
-local player_vote = 
+local player_vote =
 {
-	[1] = 	
+	[1] =
 	{
 		[1] = false,
 		[2] = false,
 		[3] = false,
 		[4] = false,
 	},
-	[2] = 	
+	[2] =
 	{
 		[1] = false,
 		[2] = false,
 		[3] = false,
 		[4] = false,
 	},
-	[3] = 	
+	[3] =
 	{
 		[1] = false,
 		[2] = false,
 		[3] = false,
 		[4] = false,
 	},
-	[4] = 	
+	[4] =
 	{
 		[1] = false,
 		[2] = false,
@@ -869,7 +872,7 @@ function CTHTDGameMode:OnPlayerSay( keys )
 			CTHTDGameMode:VoteKickPlayer(num)
 			CustomGameEventManager:Send_ServerToAllClients("show_message", {msg="player_disconnect_vote", duration=5, params={count=1}, color="#0ff"})
 			CustomGameEventManager:Send_ServerToAllClients("show_message", {msg="{d:count}", duration=5, params={count=vote_disconnect_player[num]}, color="#0ff"})
-			player_vote[keys.playerid+1][num] = true 
+			player_vote[keys.playerid+1][num] = true
 		end
 	end
 
@@ -880,11 +883,11 @@ function CTHTDGameMode:OnPlayerSay( keys )
 			CTHTDGameMode:DisVoteKickPlayer(num)
 			CustomGameEventManager:Send_ServerToAllClients("show_message", {msg="player_disconnect_disvote", duration=5, params={count=1}, color="#0ff"})
 			CustomGameEventManager:Send_ServerToAllClients("show_message", {msg="{d:count}", duration=5, params={count=vote_disconnect_player[num]}, color="#0ff"})
-			player_vote[keys.playerid+1][num] = false 
+			player_vote[keys.playerid+1][num] = false
 		end
 	end
 
-	if IsInToolsMode() then
+	if GameRules:IsCheatMode() or IsInToolsMode() then
 		if text == "-config" then
 			_CopyConfig()
 		elseif text == "-win" then
@@ -893,6 +896,14 @@ function CTHTDGameMode:OnPlayerSay( keys )
 			QuestSystem:Update( 0, {Type="wave_clear", Wave=50} )
 		elseif text == "-server" then
 			ServerEvent( "set_can_select_free_mode", keys.playerid, {} )
+		elseif text == "-gold" then
+			PlayerResource:SetGold(keys.playerid, 99999, true)
+		elseif text == "-stop" then
+			SpawnSystem:StopWave(keys.playerid+1)
+		elseif text == "-resume" then
+			SpawnSystem:ResumeWave(keys.playerid+1)
+        elseif text == "-skip" then
+            SpawnSystem:SkipWaveTime(keys.playerid+1)
 		end
 	end
 end
@@ -952,7 +963,7 @@ function OnAddGoldPerTick(caster,pertick,item)
 		if hero.thtd_pertick_is_open == false then
 			hero.thtd_pertick_is_open = true
 			item.thtd_isUsed = true
-			hero:SetContextThink(DoUniqueString("thtd_pertick_gold_think"), 
+			hero:SetContextThink(DoUniqueString("thtd_pertick_gold_think"),
 				function()
 					if GameRules:IsGamePaused() then return 0.03 end
 					if SpawnSystem:GetWave() > 51 then return nil end
@@ -970,7 +981,7 @@ function CTHTDGameMode:OnModifierFilter(keys)
 	if keys.entindex_parent_const == nil then
 		return true
 	end
-	local unit = EntIndexToHScript(keys.entindex_parent_const)   
+	local unit = EntIndexToHScript(keys.entindex_parent_const)
 
 	if unit~=nil and unit:IsNull()==false then
 		local modifierName = keys.name_const
@@ -990,7 +1001,7 @@ end
 -- reason_const: 13
 -- reliable: 0
 
-local extra_gold = 
+local extra_gold =
 {
 	[0] = 0,
 	[1] = 0,
@@ -1066,7 +1077,7 @@ function CTHTDGameMode:OnDamageFilter(keys)
 	return true
 end
 
-local thtd_bosses_list = 
+local thtd_bosses_list =
 {
 	"alice",
 	"aya",
@@ -1108,8 +1119,9 @@ function CDOTA_BaseNPC:RemoveAllTowerDamage()
 		if v~=nil and v:IsNull()==false and v:IsAlive() then
 			if SpawnSystem:GetWave() <= 51 then
 				if v:GetUnitName() == "toramaru" then
-					PlayerResource:ModifyGold(v:GetPlayerOwnerID(),v.thtd_tower_damage*0.01,true,DOTA_ModifyGold_CreepKill)
-					SendOverheadEventMessage(v:GetPlayerOwner(),OVERHEAD_ALERT_GOLD,v,v.thtd_tower_damage*0.01,v:GetPlayerOwner() )
+					local interest = v:GetModifierStackCount("modifier_toramaru_02_money_stack", v) * 5000 * 0.02 * v:THTD_GetStar () or 0
+					PlayerResource:ModifyGold(v:GetPlayerOwnerID(), interest ,true,DOTA_ModifyGold_CreepKill)
+					SendOverheadEventMessage(v:GetPlayerOwner(),OVERHEAD_ALERT_GOLD,v, interest,v:GetPlayerOwner() )
 				elseif v:GetUnitName() == "shinki" and v.thtd_shinki_01_lock == false then
 					OnShinkiGainCard(v)
 				end
@@ -1150,7 +1162,7 @@ end
 
 function CTHTDGameMode:THTD_InitFoodMsgEffect(hero)
 	hero:THTD_CreateFoodEffect()
-	hero:SetContextThink(DoUniqueString("thtd_on_hero_food_changed"), 
+	hero:SetContextThink(DoUniqueString("thtd_on_hero_food_changed"),
 		function()
 			if GameRules:IsGamePaused() then return 0.03 end
 			if hero:IsStunned() then return nil end
@@ -1161,11 +1173,11 @@ function CTHTDGameMode:THTD_InitFoodMsgEffect(hero)
 				hero:THTD_CreateFoodEffect()
 			end
 			return 0.5
-		end, 
+		end,
 	0.5)
 end
 
-local shinki_01_draw_card_type = 
+local shinki_01_draw_card_type =
 {
 	[1] = {
 		["Level1"] = 1,
@@ -1205,7 +1217,7 @@ function OnShinkiGainCard(caster)
 					local effectIndex = ParticleManager:CreateParticle("particles/heroes/thtd_shinki/ability_shinki_01.vpcf", PATTACH_CUSTOMORIGIN, nil)
 					ParticleManager:SetParticleControl(effectIndex, 0, origin - Vector(0,0,750))
 					ParticleManager:DestroyParticleSystem(effectIndex,false)
-					caster:SetContextThink(DoUniqueString("thtd_shinki_01_effect_wait"), 
+					caster:SetContextThink(DoUniqueString("thtd_shinki_01_effect_wait"),
 						function()
 							if GameRules:IsGamePaused() then return 0.03 end
 							CreateItemOnPositionSync(origin,item)
@@ -1215,7 +1227,7 @@ function OnShinkiGainCard(caster)
 					count = count + 1
 				end
 			end
-			
+
 		elseif k == "Level2" then
 			local drawList = {}
 
@@ -1248,7 +1260,7 @@ function OnShinkiGainCard(caster)
 					local effectIndex = ParticleManager:CreateParticle("particles/heroes/thtd_shinki/ability_shinki_01.vpcf", PATTACH_CUSTOMORIGIN, nil)
 					ParticleManager:SetParticleControl(effectIndex, 0, origin - Vector(0,0,750))
 					ParticleManager:DestroyParticleSystem(effectIndex,false)
-					caster:SetContextThink(DoUniqueString("thtd_shinki_01_effect_wait"), 
+					caster:SetContextThink(DoUniqueString("thtd_shinki_01_effect_wait"),
 						function()
 							if GameRules:IsGamePaused() then return 0.03 end
 							CreateItemOnPositionSync(origin,item)
@@ -1299,7 +1311,7 @@ function OnShinkiGainCard(caster)
 					local effectIndex = ParticleManager:CreateParticle("particles/heroes/thtd_shinki/ability_shinki_01.vpcf", PATTACH_CUSTOMORIGIN, nil)
 					ParticleManager:SetParticleControl(effectIndex, 0, origin - Vector(0,0,750))
 					ParticleManager:DestroyParticleSystem(effectIndex,false)
-					caster:SetContextThink(DoUniqueString("thtd_shinki_01_effect_wait"), 
+					caster:SetContextThink(DoUniqueString("thtd_shinki_01_effect_wait"),
 						function()
 							if GameRules:IsGamePaused() then return 0.03 end
 							CreateItemOnPositionSync(origin,item)

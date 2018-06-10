@@ -77,7 +77,10 @@ function OnDaiyousei03SpellStart(keys)
 
 	caster:EmitSound("Hero_Wisp.Tether.Target")
 
-	keys.ability:ApplyDataDrivenModifier(caster, target, "modifier_daiyousei_03", nil)
+	keys.ability:ApplyDataDrivenModifier(caster, target, "modifier_daiyousei_03", {})
+	local stack_count = target:GetModifierStackCount("modifier_daiyousei_03", nil) + 1 or 1
+	target:SetModifierStackCount("modifier_daiyousei_03", nil, stack_count)
+	
 	local effectIndex = Daiyousei03CreateLine(caster,target)
 	caster.ability_daiyousei_03_target = target
 
@@ -87,7 +90,10 @@ function OnDaiyousei03SpellStart(keys)
 			if GameRules:IsGamePaused() then return 0.03 end
 			if caster.ability_daiyousei_03_target ~= target then
 				if target~=nil and target:IsNull()==false and target:HasModifier("modifier_daiyousei_03") then
-					target:RemoveModifierByName("modifier_daiyousei_03")
+					target:SetModifierStackCount("modifier_daiyousei_03", nil, target:GetModifierStackCount("modifier_daiyousei_03", nil) - 1)
+					if (target:GetModifierStackCount("modifier_daiyousei_03", nil) or 0) <= 0 then
+						target:RemoveModifierByName("modifier_daiyousei_03")
+					end	
 				end
 				if count > 10 then
 					caster:StopSound("Hero_Wisp.Tether.Target")
@@ -123,23 +129,36 @@ end
 function OnDaiyousei04SpellStart(keys)
 	local caster = EntIndexToHScript(keys.caster_entindex)
 	local target = keys.target
+	local newAttackTime = target:GetBaseAttackTime() * 0.7
 
 	if caster.thtd_ability_daiyousei_04_lock == nil then caster.thtd_ability_daiyousei_04_lock = false end
 
 	if target:GetUnitName() == "cirno" and target:THTD_GetStar() == 5 and caster.thtd_ability_daiyousei_04_lock == false then
 		target:EmitSound("Hero_Wisp.Tether")
 		caster.thtd_ability_daiyousei_04_lock = true
+		
 		target:THTD_UpgradeEx()
-		target:SetBaseAttackTime(0.8)
-		target:SetAttackCapability(DOTA_UNIT_CAP_MELEE_ATTACK)
-		target:SetModel("models/new_touhou_model/cirno/ex/ex_cirno.vmdl")
-		target:SetOriginalModel("models/new_touhou_model/cirno/ex/ex_cirno.vmdl")
-		local mana_regen_ability =target:FindAbilityByName("ability_common_mana_regen_buff")
 
+        
+        if newAttackTime < 0.3 then newAttackTime = 0.3 end
+		target:SetBaseAttackTime(newAttackTime)
+        
+		target:SetAttackCapability(DOTA_UNIT_CAP_MELEE_ATTACK)
+
+        target:SetModel("models/new_touhou_model/cirno/ex/ex_cirno.vmdl")
+		target:SetOriginalModel("models/new_touhou_model/cirno/ex/ex_cirno.vmdl")
+		target:SetModelScale(target:GetModelScale() * 1.2)
+        
+		local mana_regen_ability = target:FindAbilityByName("ability_common_mana_regen_buff")
 		if mana_regen_ability ~= nil then
 			if mana_regen_ability:GetLevel() < mana_regen_ability:GetMaxLevel() then
-				mana_regen_ability:SetLevel(5)
+				mana_regen_ability:SetLevel(mana_regen_ability:GetMaxLevel())
 			end
 		end
+    
+        print("exup_count: "..target.exup_count
+             .."\n\tpower:  "..target.thtd_power
+             .."\n\tattack: "..target.thtd_attack
+             .."\n\ttime:   "..target:GetBaseAttackTime())          
 	end
 end

@@ -12,12 +12,17 @@ function OnMinoriko02StarChange(keys)
 		if hero.thtd_minoriko_02_change == nil then
 			hero.thtd_minoriko_02_change = 0
 		end
-		if hero.thtd_minoriko_02_change >= 3 then
-			CustomGameEventManager:Send_ServerToPlayer( caster:GetPlayerOwner() , "show_message", {msg="minoriko_max_change", duration=5, params={count=1}, color="#0ff"} )
-			return
+		if caster:THTD_GetStar() < target:THTD_GetStar()then
+			if (caster:THTD_GetStar() + 1) < target:THTD_GetStar()then
+				CustomGameEventManager:Send_ServerToPlayer( caster:GetPlayerOwner() , "show_message", {msg="minoriko_level_barrier", duration=5, params={count=1}, color="#0ff"} )
+				return
+			end
+			if hero.thtd_minoriko_02_change >= 3 then
+				CustomGameEventManager:Send_ServerToPlayer( caster:GetPlayerOwner() , "show_message", {msg="minoriko_max_change", duration=5, params={count=1}, color="#0ff"} )
+				return
+			end
+			
 		end
-		
-		hero.thtd_minoriko_02_change = hero.thtd_minoriko_02_change + 1
 
 		local star = target:THTD_GetStar()
 		target:THTD_SetStar(caster:THTD_GetStar())
@@ -28,5 +33,8 @@ function OnMinoriko02StarChange(keys)
 		caster:THTD_OpenAbility()
 		caster:THTD_DestroyLevelEffect()
 		caster:THTD_CreateLevelEffect()
+		
+		hero.thtd_minoriko_02_change = hero.thtd_minoriko_02_change + 1
+		CustomGameEventManager:Send_ServerToPlayer( caster:GetPlayerOwner() , "show_message", {msg="hero.thtd_minoriko_02_change", duration=5, params={count=1}, color="#0ff"} )
 	end
 end
