@@ -105,8 +105,8 @@ function Yuuka02CreatePlant(keys,vec,seed)
 	ParticleManager:DestroyParticleSystemTime(effectIndex2,5.0)
 	
 
-	flower:SetBaseDamageMax(caster:GetAttackDamage()*GetYuuka03Increase(caster))
-	flower:SetBaseDamageMin(caster:GetAttackDamage()*GetYuuka03Increase(caster))
+	flower:SetBaseDamageMax(caster:GetAverageTrueAttackDamage(caster)*GetYuuka03Increase(caster))
+	flower:SetBaseDamageMin(caster:GetAverageTrueAttackDamage(caster)*GetYuuka03Increase(caster))
 
 	local count = 0
 	flower:SetContextThink(DoUniqueString("thtd_yuuka_02_plant"), 
@@ -156,8 +156,8 @@ function Yuuka03SpellStart(keys)
 
 		illusion.effect = effectIndex
 
-		illusion:SetBaseDamageMax(caster:GetAttackDamage())
-		illusion:SetBaseDamageMin(caster:GetAttackDamage())
+		illusion:SetBaseDamageMax(caster:GetAverageTrueAttackDamage(true))
+		illusion:SetBaseDamageMin(caster:GetAverageTrueAttackDamage(true))
 
 		illusion:SetContextThink(DoUniqueString("thtd_yuuka_03_illusion"), 
 			function()

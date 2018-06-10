@@ -120,7 +120,7 @@ function OnSeiga03Death(keys)
 		local targets = THTD_FindUnitsInRadius(caster,target:GetOrigin(),300)
 	
 		for k,v in pairs(targets) do
-			local damage = caster:THTD_GetStar() * caster:THTD_GetPower() * target.thtd_poison_buff
+			local damage = caster:THTD_GetStar() * caster:THTD_GetPower() * target.thtd_poison_buff * 0.5
 
 			local DamageTable = {
 					ability = keys.ability,
