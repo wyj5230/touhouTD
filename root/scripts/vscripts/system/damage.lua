@@ -12,13 +12,26 @@ local thtd_momiji_damage_bonus =
     [5] = 0.6,
 }
 
+local thtd_sunny_damage_bonus =
+{
+    [3] = 0.2,
+    [4] = 0.3,
+    [5] = 0.5,
+}
+
 function UnitDamageTarget(damage_table)
-    local DamageTable = clone(damage_table)
+    local DamageTable = PassTheUnitDamageSystem(damage_table)
     damage_table = {}
-    
-	if DamageTable.damage_type == DAMAGE_TYPE_MAGICAL then
-		DamageTable.damage_flags = DOTA_DAMAGE_FLAG_IGNORES_MAGIC_ARMOR
-	end
+
+	return ApplyDamage(DamageTable)
+end
+
+function PassTheUnitDamageSystem(damage_table)
+    local DamageTable = clone(damage_table)
+
+    if DamageTable.damage_type == DAMAGE_TYPE_MAGICAL then
+        DamageTable.damage_flags = DOTA_DAMAGE_FLAG_IGNORES_MAGIC_ARMOR
+    end
 
     if DamageTable.attacker:FindModifierByName("modifier_item_2009_physical_penetration") ~= nil then
         if DamageTable.victim:HasModifier("modifier_item_2009_physical_penetration_effect") == false then
@@ -76,9 +89,21 @@ function UnitDamageTarget(damage_table)
                 DamageTable.damage = DamageTable.damage * ( 1 + (thtd_momiji_damage_bonus[momiji:THTD_GetStar()] or 0) )
             end
         end
+    elseif DamageTable.victim:HasModifier("modifier_sunny_02_debuff") then
+        local modifier = DamageTable.attacker:FindModifierByName("modifier_sunny_02_debuff")
+        local sunny = modifier:GetCaster()
+        if sunny ~= nil then
+            DamageTable.damage = DamageTable.damage * ( 1 + (thtd_sunny_damage_bonus[sunny:THTD_GetStar()] or 0))
+        end
+        DamageTable.damage_type = DAMAGE_TYPE_PURE
     end
+    return DamageTable
+end
 
-	return ApplyDamage(DamageTable)
+function ReturnAfterTaxDamageAfterAbility(damage_table)
+    local DamageTable = PassTheUnitDamageSystem(damage_table)
+
+    return ReturnAfterTaxDamage(DamageTable)
 end
 
 function ReturnAfterTaxDamage(DamageTable)

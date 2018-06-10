@@ -769,6 +769,22 @@ function CDOTA_BaseNPC:THTD_yoshika_thtd_combo(combo)
 	return comboVoiceTable
 end
 
+function CDOTA_BaseNPC:THTD_keine_thtd_combo(combo)
+	local comboVoiceTable = {}
+
+	if HasCombo(combo,"mokou_keine") then
+		if self.thtd_keine_03_chance ~= 50 then
+			self.thtd_keine_03_chance = 50
+		end
+	else
+		if self.thtd_keine_03_chance ~= 20 then
+			self.thtd_keine_03_chance = 20
+		end
+	end
+	combo = {}
+	return comboVoiceTable
+end
+
 function HasCombo(combo,name)
 	for k,v in pairs(combo) do
 		if k == name then
