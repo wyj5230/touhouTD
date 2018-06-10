@@ -209,6 +209,6 @@ function OnFlandre04Destroy(keys)
    	}
 	local oldHealth = target:GetHealth()
    	UnitDamageTarget(DamageTable)
-   	local olddamage = ReturnAfterTaxDamage(DamageTable)
+   	local olddamage = ReturnAfterTaxDamageAfterAbility(DamageTable)
 	OnFlandre02EndDamage(keys,target,vecTarget,olddamage - oldHealth)
 end

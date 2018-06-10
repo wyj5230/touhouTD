@@ -122,7 +122,7 @@ function OnAyaAttack(keys,target)
 			ability = keys.ability,
 		    victim = target,
 		    attacker = caster,
-		    damage = caster:GetAttackDamage(),
+		    damage = caster:GetAverageTrueAttackDamage(caster),
 		    damage_type = keys.ability:GetAbilityDamageType(), 
     	    damage_flags = DOTA_DAMAGE_FLAG_NONE
 	}
